@@ -25,7 +25,7 @@
         
           
           <div>EventDetails</div>
-          <div id = "perDetail"></div>
+          <div id ="perDetail"></div>
           <div>Communication detail</div>
           <div id="comDetail"></div>
           <br/>
@@ -104,7 +104,7 @@
                 let inputField = document.querySelector("#comDetail");
                 if (dataTyp.type === "checkboxList") {
                   for (i = 0; i < dataTyp.choices.length; i++) {
-                    inputField.innerHTML += `<div> <input type="checkbox" onclick="passNetValue(${dataTyp.choices[i].name})" value=${dataTyp.choices[i].name} .value  = ${dataTyp.choices[i].name} name =${dataTyp.choices[i].name} id="inputNet"/>
+                    inputField.innerHTML += `<div> <input type="checkbox" onclick="passNetValue(${dataTyp.choices[i].name})" value=${dataTyp.choices[i].name} name =${dataTyp.choices[i].name} id="inputNet"/>
                         <label for=${dataTyp.choices[i].name}>${dataTyp.choices[i].name}</label>
                        </div>`;
                   }
