@@ -24,23 +24,23 @@
       <form id="addPost">
         
           
-          <div>EventDetails</div>
-          <div id ="perDetail"></div>
-          <div>Communication detail</div>
-          <div id="comDetail"></div>
-          <br/>
-          <div>Education Detail</div>
-          <div>
-            <select id="eduDetail" onclick="passEduValue()">
-              <option>Choose a School</option>
-            </select>
-          </div>
-          <br/>
-          <div id="inputText"></div>
-          <hr />
-          <div><button type="submit" class="btn btn-primary" data-toggle="collapse" >Submit Form</button></div>
         
-      </form>
+        <div id ="perDetail"></div>
+        
+        <div id="comDetail"></div>
+        <br/>
+        <div></div>
+        <div>
+          <select id="eduDetail" onclick="passEduValue()">
+            <option>choose your Education</option>
+          </select>
+        </div>
+        <br/>
+        <div id="inputText"></div>
+        <hr />
+        <div><button type="submit" class="btn btn-primary" data-toggle="collapse" >Submit Form</button></div>
+      
+    </form>
   
     </div>
     
@@ -54,53 +54,53 @@
         )
           .then((res) => res.json())
           .then((data) => {
-            let pd = document.querySelector("#perDetail");
-            pd.innerHTML = `<div class="input-group">
-                        <div class="form-group row">
-                          <label for="firstname" class="col-md-4 col-form-label">ID</label>
-                         <div class="col-md-8">
-                          <input type="text" class="form-control" id="id" name="ID" placeholder="ID">
-                        </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="question_id" class="col-md-4 col-form-label">Question ID</label>
-                         <div class="col-md-8">
-                          <input type="text" class="form-control" id="question_id" name="Question Id" placeholder="Question Id">
-                        </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="public_short_name" class="col-md-4 col-form-label">Public Short Name</label>
-                         <div class="col-md-8">
-                          <input type="text" class="form-control" id="public_short_name" name="Public Short Name" placeholder="Public Short Name">
-                        </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="admin_short_name" class="col-md-4 col-form-label">Admin Short Name</label>
-                         <div class="col-md-8">
-                          <input type="text" class="form-control" id="admin_short_name" name="Admin Short Name" placeholder="Admin Short Name">
-                        </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="description" class="col-md-4 col-form-label">Description</label>
-                         <div class="col-md-8">
-                          <input type="text" class="form-control" id="description" name="Description" placeholder="Description">
-                        </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="capacity" class="col-md-4 col-form-label">Capacity</label>
-                         <div class="col-md-8">
-                          <input type="text" class="form-control" id="capacity" name="" placeholder="Description">
-                        </div>
-                        </div>
-                        <div class="form-group row">
+              data.forEach(function (dataTyp) {
+              if (dataTyp.admin_short_name.includes("NETWORKING")) {
+                let pd = document.querySelector("#perDetail");
+                 pd.innerHTML = `<div class="input-group">
+                                 <div class="form-group row">
+                                 <label for="ID" class="col-md-4 col-form-label" >ID</label>
+                                 <div class="col-md-8">
+                                 <input type="text" class="form-control" id="id" value=${dataTyp.id} name="${dataTyp.id}" placeholder="ID">
+                                 </div>
+                                </div>
+                                <div class="form-group row">
+                                <label for="question_id" class="col-md-4 col-form-label">Question ID</label>
+                              <div class="col-md-8">
+                               <input type="text" class="form-control" id="question_id" value=${dataTyp.question_id} name="${dataTyp.question_id}" placeholder="Question Id">
+                              </div>
+                              </div>
+                               <div class="form-group row">
+                               <label for="public_short_name" class="col-md-4 col-form-label">Public Short Name</label>
+                                <div class="col-md-8">
+                               <input type="text" class="form-control" id="public_short_name" value=${dataTyp.public_short_name} name="${dataTyp.public_short_name}" placeholder="Public Short Name">
+                               </div>
+                               </div>
+                               <div class="form-group row">
+                              <label for="admin_short_name" class="col-md-4 col-form-label">Admin Short Name</label>
+                               <div class="col-md-8">
+                                <input type="text" class="form-control" id="admin_short_name" value=${dataTyp.admin_short_name} name="${dataTyp.admin_short_name}" placeholder="Admin Short Name">
+                              </div>
+                             </div>
+                             <div class="form-group row">
+                             <label for="description" class="col-md-4 col-form-label">Description</label>
+                            <div class="col-md-8">
+                              <input type="text" class="form-control" id="description" value=${dataTyp.description} name="${dataTyp.description}" placeholder="Description">
+                             </div>
+                             </div>
+                           <div class="form-group row">
+                           <label for="capacity" class="col-md-4 col-form-label">Capacity</label>
+                          <div class="col-md-8">
+                          <input type="text" class="form-control" id="capacity" value=${dataTyp.capacity} name="${dataTyp.capacity}" placeholder="Description">
+                         </div>
+                           </div>
+                           <div class="form-group row">
                           <label for="sold_out_message" class="col-md-4 col-form-label">Sold Out Message</label>
                          <div class="col-md-8">
-                          <input type="text" class="form-control" id="sold_out_message" name="" placeholder="Sold out Message">
+                          <input type="text" class="form-control" id="sold_out_message" value=${dataTyp.sold_out_message} name="${dataTyp.sold_out_message}" placeholder="Sold out Message">
                         </div>
                         </div>
-                  </div>`;
-            data.forEach(function (dataTyp) {
-              if (dataTyp.admin_short_name.includes("NETWORKING")) {
+                       </div>`;
                 let inputField = document.querySelector("#comDetail");
                 if (dataTyp.type === "checkboxList") {
                   for (i = 0; i < dataTyp.choices.length; i++) {
@@ -133,6 +133,7 @@
       }
 
       function passEduValue(x) {
+        
         var lis = document.querySelector("#eduDetail");
         document.querySelector("#eduDrop").value =
           lis.options[lis.selectedIndex].value;
@@ -163,7 +164,7 @@
             public_short_name: pSn,
             admin_short_name: aSn,
             description: des,
-            sold_ot_message: som,
+            sold_out_message: som,
             capacity: cap,
             inputNet: netCheck,
             eduDrop: eduDro,
