@@ -56,12 +56,15 @@
           .then((data) => {
               data.forEach(function (dataTyp) {
               if (dataTyp.admin_short_name.includes("NETWORKING")) {
+
+                let inputField = document.querySelector("#comDetail");
+                if (dataTyp.type === "checkboxList") { 
                 let pd = document.querySelector("#perDetail");
                  pd.innerHTML = `<div class="input-group">
                                  <div class="form-group row">
-                                 <label for="ID" class="col-md-4 col-form-label" >ID</label>
+                                 <label for="ID" class="col-md-4 col-form-label">ID </label>
                                  <div class="col-md-8">
-                                 <input type="text" class="form-control" id="id" value=${dataTyp.id} name="${dataTyp.id}" placeholder="ID">
+                                 <input type="text" class="form-control" id="id" value=${dataTyp.id}  name ="${dataTyp.id}"placeholder="ID">
                                  </div>
                                 </div>
                                 <div class="form-group row">
@@ -100,9 +103,11 @@
                           <input type="text" class="form-control" id="sold_out_message" value=${dataTyp.sold_out_message} name="${dataTyp.sold_out_message}" placeholder="Sold out Message">
                         </div>
                         </div>
+                        <div> <label> Communicate with</label>
+                          </div>
                        </div>`;
-                let inputField = document.querySelector("#comDetail");
-                if (dataTyp.type === "checkboxList") {
+
+
                   for (i = 0; i < dataTyp.choices.length; i++) {
                     inputField.innerHTML += `<div> <input type="checkbox" onclick="passNetValue(${dataTyp.choices[i].name})" value=${dataTyp.choices[i].name} name =${dataTyp.choices[i].name} id="inputNet"/>
                         <label for=${dataTyp.choices[i].name}>${dataTyp.choices[i].name}</label>
